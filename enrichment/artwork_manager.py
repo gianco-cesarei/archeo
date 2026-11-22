@@ -1,5 +1,5 @@
 """
-High-Resolution Artwork Manager for Drop Agent.
+High-Resolution Artwork Manager for Archeo.
 Handles downloading, Lanczos resizing (1400x1400px minimum), square cropping,
 sRGB color normalization, and fallback artwork generation for vinyl/DJ releases.
 """
@@ -23,7 +23,7 @@ except ImportError:
     ImageFont = None
     PIL_AVAILABLE = False
 
-logger = logging.getLogger("drop_agent.artwork")
+logger = logging.getLogger("archeo.artwork")
 
 DEFAULT_MIN_DIMENSION = 1400
 JPEG_QUALITY = 95

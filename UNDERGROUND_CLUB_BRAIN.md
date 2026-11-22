@@ -1,7 +1,7 @@
 # 🧠 THE UNDERGROUND CLUB BRAIN — CURATION & ARCHITECTURE ENGINE
-*DropAgent Knowledge Base & Aesthetic Manifesto*
+*Archeo Knowledge Base & Aesthetic Manifesto*
 
-Questo documento formalizza il DNA artistico, la deontologia di settore e la tassonomia funzionale utilizzata per l'acquisizione, la catalogazione e la selezione musicale in DropAgent.
+Questo documento formalizza il DNA artistico, la deontologia di settore e la tassonomia funzionale utilizzata per l'acquisizione, la catalogazione e la selezione musicale in Archeo.
 
 ---
 
@@ -79,7 +79,7 @@ Non sono tracce complete, ma ingredienti per il 3° deck:
 
 ## 6. Radar Canali & Sorgenti di Digging (The Underground Network)
 
-Per alimentare le ricerche future di DropAgent con massima selettività:
+Per alimentare le ricerche future di Archeo con massima selettività:
 
 * **Etichette Guida**:
   * *Cabaret Recordings* (Giappone - DJ Masda, So Inagawa)

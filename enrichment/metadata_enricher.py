@@ -1,5 +1,5 @@
 """
-Metadata Enrichment Master Orchestrator for Drop Agent.
+Metadata Enrichment Master Orchestrator for Archeo.
 Coordinates Discogs & Beatport querying, artwork downloading / generation,
 and ID3v2.4 audio tagging with label, catalog number, original year, key, and buy links.
 """
@@ -17,7 +17,7 @@ from .beatport_client import BeatportClient
 from .artwork_manager import ArtworkManager
 from .metadata_tagger import MetadataTagger
 
-logger = logging.getLogger("drop_agent.enricher")
+logger = logging.getLogger("archeo.enricher")
 
 
 @dataclass

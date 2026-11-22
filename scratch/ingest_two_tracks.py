@@ -13,7 +13,7 @@ from pathlib import Path
 import mutagen
 from mutagen.id3 import ID3, TIT2, TPE1, TALB, TCON, TDRC, COMM, TBPM, TKEY
 
-sys.path.insert(0, "/Users/gianco/Documents/Claude/Projects/DropAgent")
+sys.path.insert(0, "/Users/gianco/Documents/Claude/Projects/Archeo")
 from harmonic_analyzer import estimate_key, estimate_bpm
 
 TRACKS = [

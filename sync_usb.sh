@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# DROP AGENT — INCREMENTAL USB SYNC SCRIPT
+# ARCHEO — INCREMENTAL USB SYNC SCRIPT
 # Sincronizza solo i file nuovi/modificati da Drops alla chiavetta USB.
 # ==============================================================================
 
 SOURCE_DIR="/Users/gianco/Music/Drops"
 
 echo "========================================================"
-echo " ⚡ DROP AGENT — USB SMART SYNC ⚡ "
+echo " ⚡ ARCHEO — USB SMART SYNC ⚡ "
 echo "========================================================"
 
 # 1. Trova i volumi rimovibili montati in /Volumes

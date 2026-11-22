@@ -47,7 +47,7 @@ rename_files_prefix(final_3,   "[3B]",   "[3]")
 
 # 3. Update CANONE_FASI_DJ.md
 canone_file = os.path.join(ROOT, "CANONE_FASI_DJ.md")
-content = """# 🎛️ CANONE DELLE FASI — DROP AGENT TAXONOMY
+content = """# 🎛️ CANONE DELLE FASI — ARCHEO TAXONOMY
 
 Guida di riferimento rapida per la selezione e l'ordinamento delle cartelle in Drops.
 

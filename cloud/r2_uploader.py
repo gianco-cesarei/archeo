@@ -1,5 +1,5 @@
 """
-Cloudflare R2 Object Storage Uploader for Drop Agent.
+Cloudflare R2 Object Storage Uploader for Archeo.
 Supports S3-compatible single and multipart upload, automatic MIME detection,
 immutable cache headers, and public/presigned CDN URL generation.
 """
@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-logger = logging.getLogger("drop_agent.r2")
+logger = logging.getLogger("archeo.r2")
 
 DEFAULT_BUCKET = "drops-library"
 DEFAULT_CACHE_CONTROL = "public, max-age=31536000, immutable"

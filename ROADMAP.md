@@ -1,10 +1,10 @@
-# 💧 DROP AGENT — Technical Evolution Roadmap
+# 💧 ARCHEO — Technical Evolution Roadmap
 
 > **Documento di Architettura e Roadmap Evolutiva**  
-> **Ruolo**: Lead Architect — Drop Agent & Drops Music Intelligence  
+> **Ruolo**: Lead Architect — Archeo & Drops Music Intelligence  
 > **Versione**: `2.0.0-PROPOSAL`  
 > **Data**: Agosto 2026  
-> **Destinazione**: `drops-agent/` (Core Engine) & `workspace/00_Roadmap/` (System Architecture)
+> **Destinazione**: `archeo/` (Core Engine) & `workspace/00_Roadmap/` (System Architecture)
 
 ---
 
@@ -27,7 +27,7 @@
 
 ## 1. Visione & Obiettivi Architetturali
 
-**Drop Agent** nasce come braccio autonomo di Music Intelligence, Audio Ingestion e DJ Curation dell'ecosistema **Drops**. La sua missione è trasformare qualsiasi sorgente audio non strutturata (DJ mix continui, registrazioni radio, live set su YouTube/SoundCloud, release discografiche) in un catalogo musicale di altissima qualità, arricchito con:
+**Archeo** nasce come braccio autonomo di Music Intelligence, Audio Ingestion e DJ Curation dell'ecosistema **Drops**. La sua missione è trasformare qualsiasi sorgente audio non strutturata (DJ mix continui, registrazioni radio, live set su YouTube/SoundCloud, release discografiche) in un catalogo musicale di altissima qualità, arricchito con:
 - Identificazione precisa delle tracce (anche in assenza di tracklist testuale).
 - Metadati discografici professionali (Discogs, Beatport, MusicBrainz).
 - Analisi armonica (Camelot Wheel), BPM ed energia acustica.
@@ -36,7 +36,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                              DROP AGENT ENGINE                              │
+│                              ARCHEO ENGINE                              │
 │                                                                             │
 │   [ Raw Stream / Set ] ──► [ Blind Audio Recognition ] ──► [ Track Slicing ]│
 │                                    │                               │        │
@@ -51,7 +51,7 @@
 
 ## 2. Architettura Generale del Sistema
 
-L'architettura di Drop Agent è modulare e guidata da pipeline asincrone, progettata per essere eseguita sia come **CLI autonoma ad alte prestazioni**, sia come **worker di background / subagent** invocabile dal backend di Drops.
+L'architettura di Archeo è modulare e guidata da pipeline asincrone, progettata per essere eseguita sia come **CLI autonoma ad alte prestazioni**, sia come **worker di background / subagent** invocabile dal backend di Drops.
 
 ```mermaid
 flowchart TD
@@ -113,9 +113,9 @@ flowchart TD
    - Allineamento dei confini di traccia sui transienti di beat drop più vicini per ottenere un cue marker perfettamente a tempo.
 
 #### Deliverable Tecnici
-- `drops-agent/fingerprinting/shazam_recognizer.py`
-- `drops-agent/fingerprinting/acoustid_recognizer.py`
-- `drops-agent/fingerprinting/transition_detector.py`
+- `archeo/fingerprinting/shazam_recognizer.py`
+- `archeo/fingerprinting/acoustid_recognizer.py`
+- `archeo/fingerprinting/transition_detector.py`
 - Output arricchito con `confidence_score` (0.0 - 1.0) e `timestamp_offset_seconds`.
 
 ---
@@ -137,10 +137,10 @@ flowchart TD
    - Generazione di `traktor.nml` (Native Instruments Collection format) con griglia beat e cue point esportabili.
 
 #### Deliverable Tecnici
-- `drops-agent/exporters/cue_generator.py`
-- `drops-agent/exporters/audio_slicer.py`
-- `drops-agent/exporters/rekordbox_exporter.py`
-- `drops-agent/exporters/traktor_exporter.py`
+- `archeo/exporters/cue_generator.py`
+- `archeo/exporters/audio_slicer.py`
+- `archeo/exporters/rekordbox_exporter.py`
+- `archeo/exporters/traktor_exporter.py`
 
 ---
 
@@ -161,15 +161,15 @@ flowchart TD
    - Inclusione di link diretti per l'acquisto su Bandcamp, Discogs Marketplace e Beatport nel file `TRACKLIST.md` e nel DB.
 
 #### Deliverable Tecnici
-- `drops-agent/enrichment/discogs_client.py`
-- `drops-agent/enrichment/beatport_client.py`
-- `drops-agent/enrichment/artwork_manager.py`
-- `drops-agent/enrichment/metadata_tagger.py` (Mutagen / ID3v2.4 integration)
+- `archeo/enrichment/discogs_client.py`
+- `archeo/enrichment/beatport_client.py`
+- `archeo/enrichment/artwork_manager.py`
+- `archeo/enrichment/metadata_tagger.py` (Mutagen / ID3v2.4 integration)
 
 ---
 
 ### Milestone 4: Direct Cloudflare R2 & Supabase Ingestion
-> **Obiettivo**: Connettere l'output di Drop Agent direttamente all'infrastruttura Cloud di Drops, consentendo il backup automatico dei file audio su Cloudflare R2 e la sincronizzazione immediata delle collezioni nel database PostgreSQL di Supabase.
+> **Obiettivo**: Connettere l'output di Archeo direttamente all'infrastruttura Cloud di Drops, consentendo il backup automatico dei file audio su Cloudflare R2 e la sincronizzazione immediata delle collezioni nel database PostgreSQL di Supabase.
 
 #### Componenti Chiave
 1. **Cloudflare R2 S3-Compatible Multi-Part Uploader**:
@@ -186,9 +186,9 @@ flowchart TD
    - Endpoint webhook di notifica per invalidare la cache del frontend Astro/React e aggiornare istantaneamente la piattaforma web Drops.
 
 #### Deliverable Tecnici
-- `drops-agent/cloud/r2_storage.py` (Boto3 / aioboto3 async client)
-- `drops-agent/cloud/supabase_sync.py` (Supabase Python SDK / PostgREST)
-- `drops-agent/cloud/models.py` (Pydantic data schemas)
+- `archeo/cloud/r2_storage.py` (Boto3 / aioboto3 async client)
+- `archeo/cloud/supabase_sync.py` (Supabase Python SDK / PostgREST)
+- `archeo/cloud/models.py` (Pydantic data schemas)
 
 ---
 
@@ -223,14 +223,14 @@ Set Energy & Camelot Harmonic Flow Diagram (Esempio Concettuale):
 ```
 
 #### Deliverable Tecnici
-- `drops-agent/analysis/energy_analyzer.py`
-- `drops-agent/analysis/harmonic_flow.py`
-- `drops-agent/visualization/flow_chart_generator.py`
+- `archeo/analysis/energy_analyzer.py`
+- `archeo/analysis/harmonic_flow.py`
+- `archeo/visualization/flow_chart_generator.py`
 
 ---
 
 ### Milestone 6: Autonomous AI Crate Digger Mode
-> **Obiettivo**: Trasformare Drop Agent in un agente proattivo e autonomo di ricerca musicale ("Crate Digger"), capace di scandagliare il web, canali YouTube di culto, discografie di label su Discogs e feed Bandcamp per comporre selezioni coerenti su parametri DJ specifici.
+> **Obiettivo**: Trasformare Archeo in un agente proattivo e autonomo di ricerca musicale ("Crate Digger"), capace di scandagliare il web, canali YouTube di culto, discografie di label su Discogs e feed Bandcamp per comporre selezioni coerenti su parametri DJ specifici.
 
 #### Componenti Chiave
 1. **Autonomous Discovery Agents**:
@@ -247,16 +247,16 @@ Set Energy & Camelot Harmonic Flow Diagram (Esempio Concettuale):
    - Generazione automatica di una nuova Crate strutturata in `data/audio/AI-Crates/<Crate-Name>/` con playlist, CUE e sincronizzazione Supabase/R2.
 
 #### Deliverable Tecnici
-- `drops-agent/digger/crate_agent.py`
-- `drops-agent/digger/channel_crawler.py`
-- `drops-agent/digger/recommendation_heuristics.py`
-- `drops-agent/digger/quality_gate.py`
+- `archeo/digger/crate_agent.py`
+- `archeo/digger/channel_crawler.py`
+- `archeo/digger/recommendation_heuristics.py`
+- `archeo/digger/quality_gate.py`
 
 ---
 
 ## 4. Schema Dati & Modelli di Persistenza
 
-Per garantire la perfetta integrazione con il backend di Drops e Supabase, Drop Agent produrrà e sincronizzerà le seguenti entità nel database PostgreSQL:
+Per garantire la perfetta integrazione con il backend di Drops e Supabase, Archeo produrrà e sincronizzerà le seguenti entità nel database PostgreSQL:
 
 ```sql
 -- Tabella DJ Sets / Mixes
@@ -333,7 +333,7 @@ CREATE TABLE public.set_tracks (
 
 ```mermaid
 gantt
-    title Drop Agent — Delivery Plan
+    title Archeo — Delivery Plan
     dateFormat  YYYY-MM-DD
     section Core Recognition
     M1: Audio Fingerprinting & Blind Recognition  :active, m1, 2026-09-01, 14d
@@ -378,7 +378,7 @@ gantt
    - Le transizioni vengono verificate per escludere clipping o discontinuità di fase.
 
 4. **Transazioni Atomiche per l'Ingestion Cloud**:
-   - In caso di errore durante l'upload su Cloudflare R2 o l'inserimento in Supabase, il sistema esegue un rollback locale cancellando i file orfani temporanei e registrando l'evento in `~/.drops/logs/drop_agent.log`.
+   - In caso di errore durante l'upload su Cloudflare R2 o l'inserimento in Supabase, il sistema esegue un rollback locale cancellando i file orfani temporanei e registrando l'evento in `~/.drops/logs/archeo.log`.
 
 ---
 

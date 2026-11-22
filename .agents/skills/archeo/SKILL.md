@@ -1,11 +1,11 @@
 ---
-name: drop-agent
+name: archeo
 description: Autonomous Music Curator and High-Quality Downloader for Drops. Extracts full DJ sets, parses tracklists, downloads individual tracks at 320kbps MP3 with full ID3 metadata and cover art, and organizes them into curated genre folders in data/audio.
 ---
 
-# Drop Agent — Autonomous Music Curator & Ingestion Engine
+# Archeo — Autonomous Music Curator & Ingestion Engine
 
-Drop Agent is the specialized Drops ingestion agent designed to curate, download, tag, and organize electronic music releases, DJ sets, and compilations from YouTube and audio sources.
+Archeo is the specialized Drops ingestion agent designed to curate, download, tag, and organize electronic music releases, DJ sets, and compilations from YouTube and audio sources.
 
 ## Features
 1. **Full Set Ingestion**: Downloads the continuous mix at maximum audio quality (320kbps MP3 / FLAC) with embedded artwork and album tags.
@@ -19,20 +19,20 @@ Drop Agent is the specialized Drops ingestion agent designed to curate, download
 
 ### Run via Command Line (Standard Fast Drops Mode)
 ```bash
-python3 drop_agent.py "https://www.youtube.com/watch?v=..." --genre "Deep House" --folder "Nude Dimensions Vol 1 (Naked Music 1999) - Deep House"
+python3 archeo.py "https://www.youtube.com/watch?v=..." --genre "Deep House" --folder "Nude Dimensions Vol 1 (Naked Music 1999) - Deep House"
 ```
 
 ### Run via DropSoul Mode (Audiophile Club Quality & P2P)
 ```bash
-python3 drop_agent.py "https://www.youtube.com/watch?v=..." --genre "Deep House" --mode dropsoul
+python3 archeo.py "https://www.youtube.com/watch?v=..." --genre "Deep House" --mode dropsoul
 ```
 
 ### Check Background Hunts & Cloud Queue
 ```bash
-python3 drop_agent.py --dropsoul-queue
+python3 archeo.py --dropsoul-queue
 ```
 
 ### With Custom Tracklist File
 ```bash
-python3 drop_agent.py "https://www.youtube.com/watch?v=..." --genre "Deep House" --tracks-file /path/to/tracks.txt
+python3 archeo.py "https://www.youtube.com/watch?v=..." --genre "Deep House" --tracks-file /path/to/tracks.txt
 ```

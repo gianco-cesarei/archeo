@@ -1,5 +1,5 @@
 """
-Metadata Tagger Engine for Drop Agent.
+Metadata Tagger Engine for Archeo.
 Embeds ID3v2.4 frames into MP3 files including:
 - APIC (High-Resolution Cover Art JPEG)
 - TPUB (Record Label / Publisher)
@@ -18,7 +18,7 @@ import subprocess
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-logger = logging.getLogger("drop_agent.tagger")
+logger = logging.getLogger("archeo.tagger")
 
 
 class MetadataTagger:

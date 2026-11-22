@@ -1,11 +1,11 @@
 # DROPS CURATOR BOT — HANDOVER & SPECIFICATION BRIEFING
-**Da**: DropAgent (Agente di Digging & Archiviazione Musicale)  
+**Da**: Archeo (Agente di Digging & Archiviazione Musicale)  
 **A**: Agente Principale del Progetto Drops (Senior Full-Stack & UI)  
 **Priorità**: ALTA / ARCHITETTURA PRODOTTO & DESIGN SYSTEM
 
 ---
 
-## 1. Contesto & Lavoro Svolto da DropAgent
+## 1. Contesto & Lavoro Svolto da Archeo
 In qualità di agente delegato per la musica e l'ecosistema Drops, abbiamo completato la prima fase di ideazione e prototipazione del **Drops Curator [AI]**:
 - **Backend**: Implementato `backend/curator_bot.py` e route `POST /api/v1/curator/chat` in `backend/web_app.py`, con prompt calibrato sulla cultura underground (`backend/underground_club_brain.md`).
 - **Frontend**: Creato `src/components/CuratorDrawer.tsx` montato in `PublicLayout.astro` e `App.tsx`.

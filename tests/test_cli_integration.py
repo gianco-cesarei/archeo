@@ -1,5 +1,5 @@
 """
-Integration tests for Drop Agent CLI Master Orchestrator.
+Integration tests for Archeo CLI Master Orchestrator.
 """
 
 import os
@@ -11,13 +11,13 @@ from unittest.mock import MagicMock, patch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from drop_agent import run_drop_agent, create_m3u_playlist, create_tracklist_md
+from archeo import run_archeo, create_m3u_playlist, create_tracklist_md
 from downloader import DropDownloader
 from enrichment.discogs_client import DiscogsClient
 from enrichment.beatport_client import BeatportClient
 
 
-class TestDropAgentCLI(unittest.TestCase):
+class TestArcheoCLI(unittest.TestCase):
     def setUp(self):
         self.temp_dir = tempfile.mkdtemp()
 
@@ -71,14 +71,14 @@ class TestDropAgentCLI(unittest.TestCase):
             self.assertIn("Discogs", content)
             self.assertIn("Beatport", content)
 
-    @patch("drop_agent.estimate_key", return_value=("A minor", "8A"))
-    @patch("drop_agent.estimate_bpm", return_value=124.0)
+    @patch("archeo.estimate_key", return_value=("A minor", "8A"))
+    @patch("archeo.estimate_bpm", return_value=124.0)
     @patch.object(DiscogsClient, "search_release")
     @patch.object(BeatportClient, "search_track")
     @patch.object(DropDownloader, "get_video_info")
     @patch.object(DropDownloader, "download_full_mix")
     @patch.object(DropDownloader, "download_single_track")
-    def test_run_drop_agent_pipeline_dry_run(
+    def test_run_archeo_pipeline_dry_run(
         self,
         mock_download_single,
         mock_download_full,
@@ -115,7 +115,7 @@ class TestDropAgentCLI(unittest.TestCase):
         mock_download_full.return_value = os.path.join(self.temp_dir, "00. Full Mix.mp3")
         mock_download_single.side_effect = [dummy_mp3_1, dummy_mp3_2]
 
-        result = run_drop_agent(
+        result = run_archeo(
             url="https://youtube.com/watch?v=test",
             genre="Minimal",
             audio_root=self.temp_dir,

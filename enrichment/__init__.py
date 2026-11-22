@@ -1,5 +1,5 @@
 """
-Enrichment package for Drop Agent: Discogs, Beatport, Artwork, ID3v2.4 Tagging.
+Enrichment package for Archeo: Discogs, Beatport, Artwork, ID3v2.4 Tagging.
 """
 
 from .discogs_client import DiscogsClient

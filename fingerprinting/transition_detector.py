@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Transition & Beat Drop Detector for Drop Agent.
+Transition & Beat Drop Detector for Archeo.
 Analyzes audio spectral flux, RMS energy dips/rises, and zero-crossing points
 to pinpoint precise DJ mixing transitions and beat drop cue points.
 """

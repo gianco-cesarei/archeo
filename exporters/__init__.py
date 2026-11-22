@@ -1,5 +1,5 @@
 """
-Exporters module for Drop Agent (CUE sheets, M3U8, Rekordbox XML, Traktor NML, Lossless Slicing).
+Exporters module for Archeo (CUE sheets, M3U8, Rekordbox XML, Traktor NML, Lossless Slicing).
 """
 
 from .cue_generator import (
