@@ -6,6 +6,7 @@ warnings.warn("drop_agent.py è deprecato: usa archeo.py", DeprecationWarning, s
 
 from archeo import *  # noqa: F401,F403
 from archeo import main as _main
+from archeo import run_archeo as run_drop_agent  # Backward-compatible Python API
 
 if __name__ == "__main__":
     sys.exit(_main())

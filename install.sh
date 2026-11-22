@@ -22,7 +22,7 @@ echo -e "${RESET}"
 INSTALL_DIR="$HOME/.archeo"
 LEGACY_DIR="$HOME/.drop-agent"
 
-# Migrate an installation made under the old name (Drop Agent)
+# Compatibility shim: migrate the legacy installation directory
 if [ -d "$LEGACY_DIR" ] && [ ! -e "$INSTALL_DIR" ]; then
     mv "$LEGACY_DIR" "$INSTALL_DIR"
 fi
@@ -98,23 +98,22 @@ if [ ! -d "venv" ]; then
     python3 -m venv venv || true
 fi
 
-if [ -f "venv/bin/activate" ]; then
-    source venv/bin/activate
-    PIP="pip"
-    PY="python"
+# Use the interpreter directly: migrated venv activation scripts and pip launchers
+# can still contain the legacy installation path.
+if [ -x "$INSTALL_DIR/venv/bin/python" ]; then
+    PY="$INSTALL_DIR/venv/bin/python"
 else
-    PIP="pip3"
     PY="python3"
 fi
 
 if [ -f "requirements.txt" ]; then
-    $PIP install --quiet -r requirements.txt 2>/dev/null || true
+    "$PY" -m pip install --quiet -r requirements.txt 2>/dev/null || true
 else
-    $PIP install --quiet --upgrade pip yt-dlp mutagen requests Pillow 2>/dev/null || true
+    "$PY" -m pip install --quiet --upgrade pip yt-dlp mutagen requests Pillow 2>/dev/null || true
 fi
 
 # Optional AI / harmonic packages if compatible
-$PIP install --quiet numpy scipy 2>/dev/null || true
+"$PY" -m pip install --quiet numpy scipy 2>/dev/null || true
 
 echo -e "${GREEN}✓ All audio tools configured successfully!${RESET}"
 echo -e "${GREEN}✓ Audio library folder: $MUSIC_DIR${RESET}"
@@ -126,7 +125,7 @@ echo -e "\n${BOLD}[4/4] Starting Archeo...${RESET}\n"
 if [ -w "/usr/local/bin" ]; then
     [ -e "/usr/local/bin/archeo" ] || ln -sf "$INSTALL_DIR/install.sh" "/usr/local/bin/archeo" 2>/dev/null || true
     # Old command name kept for one release
-    ln -sf "$INSTALL_DIR/install.sh" "/usr/local/bin/drop-agent" 2>/dev/null || true
+    ln -sf "/usr/local/bin/archeo" "/usr/local/bin/drop-agent" 2>/dev/null || true
 fi
 
-exec $PY archeo.py "$@"
+exec "$PY" archeo.py "$@"
