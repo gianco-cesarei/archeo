@@ -8,7 +8,7 @@ import numpy as np
 import os
 import sys
 
-# Ensure drops-agent is in path
+# Ensure archeo is in path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from fingerprinting.transition_detector import find_zero_crossing, TransitionDetector

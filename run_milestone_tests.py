@@ -19,7 +19,7 @@ from tests.test_cloud_pipeline import (
     TestR2Uploader, TestSupabaseSyncClient
 )
 from tests.test_cli_integration import (
-    TestDropAgentCLI
+    TestArcheoCLI
 )
 
 def run():
@@ -36,14 +36,14 @@ def run():
         TestMetadataEnricher,
         TestR2Uploader,
         TestSupabaseSyncClient,
-        TestDropAgentCLI,
+        TestArcheoCLI,
     ]
     
     for c in classes:
         suite.addTests(loader.loadTestsFromTestCase(c))
 
     print("\n" + "=" * 65)
-    print(f" 🧪 DROP AGENT - RUNNING {suite.countTestCases()} TESTS (MILESTONES 1, 2, 3 & 4)")
+    print(f" 🧪 ARCHEO - RUNNING {suite.countTestCases()} TESTS (MILESTONES 1, 2, 3 & 4)")
     print("=" * 65)
 
     runner = unittest.TextTestRunner(stream=sys.stdout, verbosity=2)

@@ -1,5 +1,5 @@
 """
-Beatport API & Scraper Client for Drop Agent.
+Beatport API & Scraper Client for Archeo.
 Extracts label, catalog number, original key, BPM, subgenre, high-res artwork, and purchase links.
 """
 
@@ -15,7 +15,7 @@ import urllib.error
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-logger = logging.getLogger("drop_agent.beatport")
+logger = logging.getLogger("archeo.beatport")
 
 BEATPORT_SEARCH_URL = "https://www.beatport.com/api/v4/catalog/search"
 BEATPORT_WEB_SEARCH = "https://www.beatport.com/search/tracks"

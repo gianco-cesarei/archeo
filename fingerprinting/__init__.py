@@ -1,5 +1,5 @@
 """
-Fingerprinting and Blind Audio Recognition module for Drop Agent.
+Fingerprinting and Blind Audio Recognition module for Archeo.
 """
 
 import sys

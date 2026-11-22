@@ -1,5 +1,5 @@
 """
-Discogs API Client for Drop Agent.
+Discogs API Client for Archeo.
 Provides rate-limited (60 req/min), cached querying for official release metadata,
 catalog numbers, record labels, original release years, and primary artwork.
 """
@@ -19,10 +19,10 @@ import urllib.error
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-logger = logging.getLogger("drop_agent.discogs")
+logger = logging.getLogger("archeo.discogs")
 
 DISCOGS_API_BASE = "https://api.discogs.com"
-DEFAULT_USER_AGENT = "DropAgent/2.0 +https://drops.musicagent.workers.dev"
+DEFAULT_USER_AGENT = "Archeo/2.0 +https://drops.musicagent.workers.dev"
 
 
 def _clean_string(value: Optional[str]) -> str:

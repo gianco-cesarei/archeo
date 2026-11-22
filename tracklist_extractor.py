@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Tracklist Extractor Module for Drop Agent.
+Tracklist Extractor Module for Archeo.
 Extracts and parses tracklists from YouTube descriptions, chapters, text, or LLM output.
 """
 
