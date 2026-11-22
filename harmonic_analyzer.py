@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Harmonic Key & BPM Analyzer for Drop Agent.
+Harmonic Key & BPM Analyzer for Archeo.
 Calculates and maps Musical Keys to Camelot Wheel notation (e.g. 8A, 8B, 4A, etc.)
 and estimates BPM & Key using audio FFT/Chromagram analysis via ffmpeg and numpy.
 """

@@ -1,5 +1,5 @@
 """
-Cloud ingestion package for Drop Agent: Cloudflare R2 Uploader & Supabase Sync.
+Cloud ingestion package for Archeo: Cloudflare R2 Uploader & Supabase Sync.
 """
 
 from .models import DJSetModel, TrackModel, SetTrackModel, IngestionReport

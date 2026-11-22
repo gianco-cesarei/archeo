@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Downloader and Tagging Engine for Drop Agent.
+Downloader and Tagging Engine for Archeo.
 Handles high-quality audio downloading via yt-dlp and ffmpeg post-processing.
 """
 
@@ -49,7 +49,7 @@ class DropDownloader:
             res = subprocess.run(cmd, capture_output=True, text=True, check=True)
             return json.loads(res.stdout)
         except Exception as e:
-            print(f"[Drop Agent] ⚠️ Metadata extraction error: {e}")
+            print(f"[Archeo] ⚠️ Metadata extraction error: {e}")
             return {}
 
     def download_full_mix(self, url: str, album_title: str, genre: str, filename: str = "00_Full_Continuous_Mix.mp3") -> Optional[str]:
@@ -58,7 +58,7 @@ class DropDownloader:
         """
         out_path = os.path.join(self.output_dir, filename)
 
-        print(f"[Drop Agent] 🎛️  Downloading full continuous mix to: {filename}...")
+        print(f"[Archeo] 🎛️  Downloading full continuous mix to: {filename}...")
         cmd = [
             "yt-dlp",
             "--no-check-certificate",
@@ -76,10 +76,10 @@ class DropDownloader:
         ]
         try:
             subprocess.run(cmd, check=True)
-            print(f"[Drop Agent] ✅ Full mix saved: {out_path}")
+            print(f"[Archeo] ✅ Full mix saved: {out_path}")
             return out_path
         except Exception as e:
-            print(f"[Drop Agent] ⚠️ Failed to download full continuous mix: {e}")
+            print(f"[Archeo] ⚠️ Failed to download full continuous mix: {e}")
             if os.path.exists(out_path):
                 try:
                     os.remove(out_path)
@@ -122,7 +122,7 @@ class DropDownloader:
         out_path = os.path.join(self.output_dir, filename)
 
         if os.path.exists(out_path) and os.path.getsize(out_path) > 100000:
-            print(f"[Drop Agent] ⏩ Track already exists: {filename}")
+            print(f"[Archeo] ⏩ Track already exists: {filename}")
             return out_path
 
         clean_artist = _clean_text(safe_artist)
@@ -140,7 +140,7 @@ class DropDownloader:
                 seen.add(candidate)
                 queries.append(candidate)
 
-        print(f"[Drop Agent] 🔍 Searching and downloading: {track_str}. {safe_artist} – {safe_title}")
+        print(f"[Archeo] 🔍 Searching and downloading: {track_str}. {safe_artist} – {safe_title}")
 
         # Post-processor args for metadata
         metadata_args = (
@@ -181,13 +181,13 @@ class DropDownloader:
                     try:
                         res = subprocess.run(cmd, capture_output=True, text=True, check=True)
                         if os.path.exists(out_path) and os.path.getsize(out_path) > 10000:
-                            print(f"[Drop Agent] ✅ Successfully downloaded: {filename}")
+                            print(f"[Archeo] ✅ Successfully downloaded: {filename}")
                             return out_path
                     except Exception as exc:
                         if os.path.exists(out_path):
                             os.remove(out_path)
                         continue
 
-        print(f"[Drop Agent] ❌ Could not download {filename} after all search fallbacks.")
+        print(f"[Archeo] ❌ Could not download {filename} after all search fallbacks.")
         return None
 

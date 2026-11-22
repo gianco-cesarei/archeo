@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Playlist & Multi-Track Ingestion Engine for Drop Agent.
+Playlist & Multi-Track Ingestion Engine for Archeo.
 Downloads all tracks from a YouTube playlist directly in parallel (ThreadPoolExecutor),
 computes Harmonic Key (Camelot Wheel 1A-12B) and BPM, writes ID3 tags with embedded thumbnails,
 and generates M3U8 playlist & TRACKLIST.md.
@@ -226,8 +226,8 @@ def generate_playlist_files(output_dir: str, playlist_title: str, genre: str, ur
         mf.write("- **Adiacente (+1 / -1) (Energy Shift)**: es. `8A` ➔ `9A` (aumenta energia) o `8A` ➔ `7A` (rilassa atmosfera)\n")
         mf.write("- **Modo Parallelo (Mood Swap)**: es. `8A` (La min) ➔ `8B` (Do Mag) (transizione aperta/vocale)\n")
 
-    print(f"[Drop Agent] 📜 Generated Playlist: {m3u_path}")
-    print(f"[Drop Agent] 📄 Generated Markdown: {md_path}")
+    print(f"[Archeo] 📜 Generated Playlist: {m3u_path}")
+    print(f"[Archeo] 📄 Generated Markdown: {md_path}")
 
 
 def ingest_full_playlist(
@@ -238,24 +238,24 @@ def ingest_full_playlist(
     audio_root: str = DEFAULT_AUDIO_ROOT
 ):
     print("=" * 65)
-    print(" 💧 DROP AGENT — High-Speed Parallel Playlist Ingestion 💧 ")
+    print(" 💧 ARCHEO — High-Speed Parallel Playlist Ingestion 💧 ")
     print("=" * 65)
 
-    print(f"[Drop Agent] 📡 Fetching playlist metadata: {playlist_url}")
+    print(f"[Archeo] 📡 Fetching playlist metadata: {playlist_url}")
     pl_data = fetch_playlist_metadata(playlist_url)
     pl_title = pl_data.get("title", "YouTube Playlist")
     entries = pl_data.get("entries", [])
 
-    print(f"[Drop Agent] 💿 Playlist Title: {pl_title}")
-    print(f"[Drop Agent] 📊 Found {len(entries)} tracks in playlist.")
+    print(f"[Archeo] 💿 Playlist Title: {pl_title}")
+    print(f"[Archeo] 📊 Found {len(entries)} tracks in playlist.")
 
     if not folder_name:
         folder_name = sanitize_filename(f"{pl_title} ({genre})")
 
     target_dir = os.path.join(audio_root, folder_name)
     os.makedirs(target_dir, exist_ok=True)
-    print(f"[Drop Agent] 📁 Target Catalog Directory: {target_dir}")
-    print(f"[Drop Agent] ⚡ Parallel Workers: {workers}")
+    print(f"[Archeo] 📁 Target Catalog Directory: {target_dir}")
+    print(f"[Archeo] ⚡ Parallel Workers: {workers}")
 
     completed_items = []
 
@@ -288,7 +288,7 @@ def ingest_full_playlist(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Drop Agent — Parallel Playlist Ingestion")
+    parser = argparse.ArgumentParser(description="Archeo — Parallel Playlist Ingestion")
     parser.add_argument("url", help="YouTube Playlist URL")
     parser.add_argument("--genre", default="Electronic / Houghton Festival", help="Genre / Category")
     parser.add_argument("--folder", default=None, help="Target folder inside data/audio")

@@ -1,3 +1,3 @@
 """
-Unit tests for Drop Agent.
+Unit tests for Archeo.
 """

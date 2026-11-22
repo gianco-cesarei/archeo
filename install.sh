@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# 💧 DROP AGENT — Universal One-Line Installer & Launcher
+# 💧 ARCHEO — Universal One-Line Installer & Launcher
 # Works on macOS & Linux. Auto-detects/installs Python3, FFmpeg, and dependencies.
 # ==============================================================================
 
@@ -15,11 +15,17 @@ RED='\033[0;31m'
 
 echo -e "${CYAN}${BOLD}"
 echo "================================================================="
-echo " 💧 DROP AGENT — AUTONOMOUS MUSIC CURATOR & INGESTION ENGINE 💧"
+echo " 💧 ARCHEO — AUTONOMOUS MUSIC CURATOR & INGESTION ENGINE 💧"
 echo "================================================================="
 echo -e "${RESET}"
 
-INSTALL_DIR="$HOME/.drop-agent"
+INSTALL_DIR="$HOME/.archeo"
+LEGACY_DIR="$HOME/.drop-agent"
+
+# Migrate an installation made under the old name (Drop Agent)
+if [ -d "$LEGACY_DIR" ] && [ ! -e "$INSTALL_DIR" ]; then
+    mv "$LEGACY_DIR" "$INSTALL_DIR"
+fi
 MUSIC_DIR="$HOME/Music/Drops"
 
 mkdir -p "$MUSIC_DIR"
@@ -65,15 +71,16 @@ if ! command -v python3 &>/dev/null; then
 fi
 echo -e "${GREEN}✓ Python 3 available: $(python3 --version)${RESET}"
 
-# 2. Clone or Update Drop Agent
-echo -e "\n${BOLD}[2/4] Fetching Drop Agent...${RESET}"
+# 2. Clone or Update Archeo
+echo -e "\n${BOLD}[2/4] Fetching Archeo...${RESET}"
 if [ -d "$INSTALL_DIR/.git" ]; then
     echo -e "${CYAN}Updating existing installation in $INSTALL_DIR...${RESET}"
+    git -C "$INSTALL_DIR" remote set-url origin https://github.com/gianco-cesarei/archeo.git 2>/dev/null || true
     git -C "$INSTALL_DIR" pull --quiet origin main || true
 else
-    echo -e "${CYAN}Cloning drop-agent into $INSTALL_DIR...${RESET}"
+    echo -e "${CYAN}Cloning archeo into $INSTALL_DIR...${RESET}"
     rm -rf "$INSTALL_DIR"
-    git clone --quiet https://github.com/gianco-cesarei/drop-agent.git "$INSTALL_DIR"
+    git clone --quiet https://github.com/gianco-cesarei/archeo.git "$INSTALL_DIR"
 fi
 
 # Ensure data/audio symlink points to ~/Music/Drops
@@ -112,12 +119,14 @@ $PIP install --quiet numpy scipy 2>/dev/null || true
 echo -e "${GREEN}✓ All audio tools configured successfully!${RESET}"
 echo -e "${GREEN}✓ Audio library folder: $MUSIC_DIR${RESET}"
 
-# 4. Launch Drop Agent
-echo -e "\n${BOLD}[4/4] Starting Drop Agent...${RESET}\n"
+# 4. Launch Archeo
+echo -e "\n${BOLD}[4/4] Starting Archeo...${RESET}\n"
 
 # Create quick launcher command in /usr/local/bin if writable
-if [ -w "/usr/local/bin" ] && [ ! -f "/usr/local/bin/drop-agent" ]; then
+if [ -w "/usr/local/bin" ]; then
+    [ -e "/usr/local/bin/archeo" ] || ln -sf "$INSTALL_DIR/install.sh" "/usr/local/bin/archeo" 2>/dev/null || true
+    # Old command name kept for one release
     ln -sf "$INSTALL_DIR/install.sh" "/usr/local/bin/drop-agent" 2>/dev/null || true
 fi
 
-exec $PY drop_agent.py "$@"
+exec $PY archeo.py "$@"

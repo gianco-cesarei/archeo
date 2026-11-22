@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Audio Fingerprinting & Blind Track Recognition Engine for Drop Agent.
+Audio Fingerprinting & Blind Track Recognition Engine for Archeo.
 Extracts 15s audio segments in RAM via FFmpeg, recognizes them asynchronously
 via Shazamio with concurrency semaphore control, clusters and deduplicates detections,
 detects precise DJ mixing transitions, and falls back to local harmonic key/BPM analysis.

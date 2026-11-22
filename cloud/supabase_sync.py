@@ -1,5 +1,5 @@
 """
-Supabase PostgREST Ingestion & Synchronization Client for Drop Agent.
+Supabase PostgREST Ingestion & Synchronization Client for Archeo.
 Performs atomic, idempotent upserts for dj_sets, tracks, and set_tracks relational tables.
 """
 
@@ -15,7 +15,7 @@ import uuid
 
 from .models import DJSetModel, TrackModel, SetTrackModel, IngestionReport
 
-logger = logging.getLogger("drop_agent.supabase")
+logger = logging.getLogger("archeo.supabase")
 
 
 class SupabaseSyncClient:

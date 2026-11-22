@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Spotify Resolver & Parallel Ingestion Engine for Drop Agent.
+Spotify Resolver & Parallel Ingestion Engine for Archeo.
 Resolves Spotify Tracks, Albums, and Playlists (zero credentials needed),
 extracts official metadata (Artist, Title, Album, HQ Cover Art),
 downloads 320kbps MP3 audio streams in parallel,
