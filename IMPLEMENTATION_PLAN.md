@@ -3,7 +3,7 @@
 > **Ruolo**: Lead Engineer — Archeo & Drops Music Intelligence  
 > **Versione**: `2.1.0-EXEC`  
 > **Data**: Agosto 2026  
-> **Target Files**: `archeo/` (Core Engine) | `workspace/00_Roadmap/DROP_AGENT_EXECUTION_PLAN.md`
+> **Target Files**: `archeo/` (Core Engine) | `workspace/00_Roadmap/ARCHEO_EXECUTION_PLAN.md`
 
 ---
 
